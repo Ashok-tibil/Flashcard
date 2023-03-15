@@ -1,0 +1,111 @@
+<html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title> Choosing subject + homepage </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<section>
+    <h1 align="center"> Online Flash Cards Project</h1>
+
+    {% extends "base.html" %}
+
+    {% block title %}About Us{% endblock %}
+
+    {% block content %}
+
+    <form action="" method="POST">
+
+        <div align="center">
+            <div align="center" class="border">
+                Subjects: <select name="subject" id="subject">
+                <option value="" selected="selected">Select subject</option>
+            </select>
+                <br><br>
+                Topics: <select name="topic" id="topic">
+                <option value="" selected="selected">Please select subject first</option>
+            </select>
+                <br><br>
+                Quizzes: <select name="quiz" id="quiz">
+                <option value="" selected="selected">Please select topic first</option>
+            </select>
+                <br><br>
+                <button id="submit-btn" type="submit" disabled>Submit</button>
+
+            </div>
+        </div>
+    </form>
+
+    <script>
+  // Get the select fields and submit button
+  const subject = document.getElementById('subject');
+  const topic = document.getElementById('topic');
+  const quiz = document.getElementById('quiz');
+  const submitBtn = document.getElementById('submit-btn');
+
+  // Function to check if all select fields are non-empty
+  function checkSelectFields() {
+    return subject.value && topic.value && quiz.value;
+  }
+
+  // Add event listeners to each select field
+  subject.addEventListener('change', () => {
+    submitBtn.disabled = !checkSelectFields();
+  });
+  topic.addEventListener('change', () => {
+    submitBtn.disabled = !checkSelectFields();
+  });
+  quiz.addEventListener('change', () => {
+    submitBtn.disabled = !checkSelectFields();
+  });
+
+    </script>
+
+    <script>
+    var subjectObject = JSON.parse('{{ subjectObject|safe }}');
+    console.log("abc",subjectObject);
+    window.onload = function() {
+  var subjectSel = document.getElementById("subject");
+  var topicSel = document.getElementById("topic");
+  var quizSel = document.getElementById("quiz");
+  for (var x in subjectObject) {
+    subjectSel.options[subjectSel.options.length] = new Option(x, x);
+  }
+  subjectSel.onchange = function() {
+ //empty quizzes- and Topics- dropdowns
+ quizSel.length = 1;
+ topicSel.length = 1;
+    //display correct values
+    for (var y in subjectObject[this.value]) {
+      topicSel.options[topicSel.options.length] = new Option(y, y);
+    }
+  }
+  topicSel.onchange = function() {
+ //empty quizzes dropdown
+ quizSel.length = 1;
+    //display correct values
+    var z = subjectObject[subjectSel.value][this.value];
+    for (var i = 0; i < z.length; i++) {
+      quizSel.options[quizSel.options.length] = new Option(z[i].name, z[i].id);
+    }
+  }
+}
+
+     </script>
+
+    <script>
+
+    const dropdown = document.getElementById('Quizzes');
+    const button = document.getElementById('name');
+
+    button.addEventListener('click', () => {
+    const selectedName = dropdown.value;
+    button.textContent = selectedName;
+});
+
+    </script>
+
+    {% endblock %}
+</section>
+</body>
+</html>

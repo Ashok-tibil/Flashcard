@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title> Uploading Questions and Answers </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<section>
+    <h1 align="center"> Online Flash Cards Project</h1>
+
+    {% extends "base.html" %}
+
+    {% block title %}About Us{% endblock %}
+
+    {% block content %}
+
+    <form onsubmit="event.preventDefault(); return alert1()">
+        <div align="center">
+            <div align="center" class="border">
+
+                <div class="container">
+                    <div class="row">
+                        <input type="text" id="Quiz_name" name="Quiz_name" placeholder="Enter a quiz name"
+                               autocomplete="off" class="textbox" required/></br></br>
+                        <label> Questions </label>
+                        <label> Answers </label>
+                    </div>
+                    <div id="text-box-container" class="row">
+                        <input type="text" id="Question1" name="Question" size="18" placeholder="1.Enter a Question..."
+                               autocomplete="off" required>
+                        <input type="text" id="Answer1" name="Answer" size="18" placeholder="1.Enter a Answer..."
+                               autocomplete="off" required>
+
+                    </div>
+                    <div class="row ">
+                        <div class="center">
+                            <button type="button" onclick="createFunction()">Add</button>
+                        </div>
+                        <br>
+                    </div>
+                    <div class="pull-right">
+                        <button class="btn" id="my-button" style="font-weight: bold;">submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+    function alert1() {
+    fetch("/upload_key_terms_definition/" + {{topicid}}, {
+        method: "POST",
+        body: new FormData(event.target)
+    })
+    .then(response => response.json())
+    .then(data => {
+    if (data.status === 200) {
+      message = "Success! Data received: "+ data.message;
+      swal({
+            title: "Success!",
+            text: message,
+            icon: "success",
+            button: "OK",
+            className: 'text-center',
+        }).then(()=>{
+        window.location.href = "/start"});
+    } else if (data.status === 400) {
+      message = data.message;
+      swal({
+            title: "Error",
+            text: message,
+            icon: "error",
+            button: "OK",
+            className: 'text-center'
+        });
+    } else {
+      message = data.message;
+      swal({
+            title: "Error",
+            text: message,
+            icon: "error",
+            button: "OK",
+            className: 'text-center'
+        });
+    }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        swal({
+      title: 'Error',
+      text: error,
+      icon: 'error',
+      button: 'OK',
+      className: 'text-center'
+    });
+    });
+}
+        function createFunction() {
+    var count = document.querySelectorAll('#text-box-container > input').length / 2 + 1;
+
+    var newTextBox1 = document.createElement("input");
+    newTextBox1.type = "text";
+    newTextBox1.name = "Question";
+    newTextBox1.autocomplete = "off"
+    newTextBox1.placeholder = count + ". Enter a Question...";
+    newTextBox1.size = "18"
+    newTextBox1.style.marginRight = "4px";
+    newTextBox1.style.marginTop = "13px";
+
+    // Add the new text input element to the text box container
+    var container = document.getElementById("text-box-container");
+    container.appendChild(newTextBox1);
+
+    var newTextBox2 = document.createElement("input");
+    newTextBox2.type = "text";
+    newTextBox2.name = "Answer";
+    newTextBox2.autocomplete = "off"
+    newTextBox2.placeholder = count + ". Enter an answer...";
+    newTextBox2.size = "18"
+
+    // Add the new text input element to the text box container
+    var container2 = document.getElementById("text-box-container");
+    container2.appendChild(newTextBox2);
+}
+
+    </script>
+
+    {% endblock %}
+</section>
+
+</body>
+
+</html>
+
+<div class="roe">
+
+</div>

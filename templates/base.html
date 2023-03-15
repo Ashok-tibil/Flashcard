@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <meta charset="UTF-8">
+    <title> Create quiz v/s Choose existing quiz </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<section>
+    <body>
+    <header>
+        <nav>
+            <div style="display: flex; justify-content: space-between">
+                <div>
+                    <button onclick="location.href='{{ url_for('start') }}'">Home</button>
+                </div>
+                <div>
+                    <button onclick="location.href='{{ url_for('login') }}'">Logout</button>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    </body>
+</section>
+</html>

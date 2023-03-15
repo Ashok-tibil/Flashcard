@@ -1,0 +1,38 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title> Create quiz v/s Choose existing quiz </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<section>
+
+    <h1 align="center"> Online Flash Cards Project</h1>
+    {% extends "base.html" %}
+
+    {% block title %}About Us{% endblock %}
+
+    {% block content %}
+
+    <form action="" method="post">
+
+        <div align="center">
+            <div align="center" class="border">
+                <input type="submit" class="btn" name="Create_quiz" value="Create a Quiz"><br><br>
+                <input type="submit" class="btn" name="Choose_Existing_quiz" value="Choose from Existing Quiz">
+                <br><br><br>
+            </div>
+            </br></br>
+
+        </div>
+    </form>
+
+    {% endblock %}
+</section>
+
+
+</body>
+
+</html>
+

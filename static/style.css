@@ -1,0 +1,304 @@
+    @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Lato:ital,wght@0,300;0,400;1,300;1,400&display=swap");
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <!--Stylesheet-->
+    <style media="screen">
+      *,
+*:before,
+*:after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.background{
+    width: 430px;
+    height: 520px;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    top: 50%;
+}
+.background .shape{
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    border-radius: 50%;
+}
+.shape:first-child{
+    background: linear-gradient(
+        #1845ad,
+        #23a2f6
+    );
+    left: -80px;
+    top: -80px;
+}
+.shape:last-child{
+    background: linear-gradient(
+        to right,
+        #ff512f,
+        #f09819
+    );
+    right: -30px;
+    bottom: -80px;
+}
+form{
+    height: 520px;
+    width: 400px;
+    background-color: rgba(255,255,255,0.1);
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    backdrop-filter: blur(30px);
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    padding: 50px 35px;
+    overflow-y: auto;
+    overflow-x: hidden;
+   }
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(255,255,255,0.13);
+  border-radius: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+form *{
+    color: black;
+    letter-spacing: 0.6px;
+    outline: none;
+    border: none;
+    font-weight :bold;
+}
+form h3{
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 42px;
+    text-align: center;
+}
+
+label{
+    display: block;
+    margin-top: 30px;
+    font-size: 20px;
+    font-weight: 500;
+    font-weight: bold;
+}
+input{
+    display: inline-block;
+    height: 50px;
+    width: 100%;
+    background-color: white;
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 300;
+    color: black;
+}
+.text-center {
+  text-align: center;
+}
+select{
+    display: block;
+    height: 50px;
+    width: 100%;
+    background-color: white;
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 300;
+    font-weight: bold;
+}
+
+option{
+    display: block;
+    height: 50px;
+    width: 100%;
+    background-color: rgba(0,0,0,0.07);
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 300;
+    color: black;
+}
+
+
+
+::placeholder{
+    color: #e5e5e5;
+}
+button{
+    margin-top: 50px;
+    width: 150px;
+    background-color: white;
+    color: black;
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    border: none;
+}
+.social{
+  margin-top: 30px;
+  display: flex;
+}
+.social div{
+  background: red;
+  width: 150px;
+  border-radius: 3px;
+  padding: 5px 10px 10px 5px;
+  background-color: rgba(255,255,255,0.27);
+  color: #eaf0fb;
+  text-align: center;
+}
+.social div:hover{
+  background-color: rgba(255,255,255,0.47);
+}
+.social .fb{
+  margin-left: 25px;
+}
+.social i{
+  margin-right: 4px;
+}
+
+
+
+/* ---------- drop down  --------- */
+
+::placeholder {
+  color: black;
+  opacity: 1;
+}
+
+h1{
+font-family: "Dancing Script", cursive;
+text-align: center;
+font-size: 45px;
+color: #f5f5f5;
+font-weight: 700;
+}
+
+
+*{
+    margin: 0;
+    padding: 0;
+}
+section
+{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(-45deg, #ee5425, #e71364, #089acf, #0bcea0);
+    overflow: hidden;
+    background-size: 400% 400%;
+    animation: gradient-bg 15s ease infinite;
+
+}
+ section .wave
+ {
+     position: absolute;
+     bottom: 0;
+     left: 0;
+     width: 100%;
+     height: 100px;
+     background: url(wave.png);
+     background-size: 1000px 100px;
+
+ }
+
+@keyframes gradient-bg
+{
+    0%{
+        background-position: 0% 50%;
+    }
+    50%{
+        background-position: 100% 50%;
+    }
+    100%{
+        background-position: 0% 50%;
+    }
+
+}
+
+
+section .wave.water
+{
+   animation: animate 25s linear infinite;
+   z-index:1000;
+   opacity:1;
+   animation-delay: 0s;
+   bottom:0;
+
+}
+
+section .wave.water:nth-child(2)
+{
+   animation: animate2 15s linear infinite;
+   z-index:999;
+   opacity:0.5;
+   animation-delay: -5s;
+   bottom:10px;
+
+}
+section .wave.water:nth-child(3)
+{
+   animation: animate 30s cubic-bezier(.55, .5,.45,.5) infinite;
+   z-index:998;
+   opacity:0.2;
+   animation-delay: -5s;
+   bottom:15px;
+
+}
+section .wave.water:nth-child(4)
+{
+   animation: animate2 5s linear infinite;
+   z-index:997;
+   opacity:0.7;
+   animation-delay: -5s;
+   bottom:20px;
+
+}
+
+
+@keyframes animate
+{
+   0%{
+       background-position-x: 0;
+   }
+   100%{
+       background-position-x: 1000px;
+   }
+}
+@keyframes animate2
+{
+   0%{
+       background-position-x: 0;
+   }
+   100%{
+       background-position-x: -1000px;
+   }
+
+
+
+#answer {
+      display: none;
+    }
+
+

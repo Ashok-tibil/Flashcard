@@ -1,0 +1,47 @@
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title> Choosing subject </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<section>
+    <h1 align="center"> Online Flash Cards Project</h1>
+
+    {% extends "base.html" %}
+
+    {% block title %}About Us{% endblock %}
+
+    {% block content %}
+
+    <form action="" method="POST">
+
+        <div align="center">
+            <div align="center" class="border">
+
+                <SELECT name="Subject_Id" class="col">
+                    {% for j in choose_subjectlist %}
+                    <OPTION class="col" value={{j['Subject_Id']}}>{{j['Subject_name']}}</OPTION>
+                    {% endfor %}
+                </SELECT> <br><br><br>
+                <input type="submit" class="btn" name="submit" value="submit"><br><br><br><br>
+<!--                <button onclick="goToPage()">Create Subject</button>-->
+            </div>
+            </br></br>
+
+        </div>
+
+    </form>
+
+    {% endblock %}
+</section>
+
+<!--<script>-->
+<!--function goToPage() {-->
+<!--    window.location.href= "create_subject.html";-->
+<!--}-->
+<!--</script>-->
+
+</body>
+</html>
